@@ -3,6 +3,8 @@ const app = express();
 require("dotenv").config();
 const port = process.env.PORT;
 const mongoose = require("./config/mongoose");
+const passport = require("passport");
+const passportJWT = require("./config/passport-jwt-authentication");
 const cors = require("cors");
 
 app.use(cors());
