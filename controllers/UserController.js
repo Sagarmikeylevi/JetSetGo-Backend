@@ -16,8 +16,6 @@ module.exports.createSession = async (req, res) => {
         token: jwt.sign(user.toJSON(), process.env.SECRET_KEY, {
           expiresIn: "1h",
         }),
-        userId: user._id,
-        username: user.name,
       },
     });
   } catch (err) {
@@ -52,5 +50,16 @@ module.exports.register = async (req, res) => {
     return res.status(500).json({
       message: "Error in registation",
     });
+  }
+};
+
+module.exports.getUser = async (req, res) => {
+  try {
+    const user = req.user;
+
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.log("******", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
