@@ -6,6 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/api/user", require("./user"));
+router.use("/api/flight", require("./flight"));
 
 console.log("Routes are running fine");
 module.exports = router;

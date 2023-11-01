@@ -7,7 +7,7 @@ module.exports.createSession = async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
 
     if (!user || user.password != req.body.password) {
-      return res.status(422).json("Invalid username or password");
+      return res.status(422).json({ error: "Invalid username or password" });
     }
 
     return res.status(200).json({
@@ -34,6 +34,7 @@ module.exports.register = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        role: "user",
       });
       await newUser.save();
       return res.status(200).json({
@@ -43,12 +44,12 @@ module.exports.register = async (req, res) => {
       return res
         .status(409)
 
-        .json("A user with the same email address already exists");
+        .json({ error: "A user with the same email address already exists" });
     }
   } catch (err) {
     console.log("******", err);
     return res.status(500).json({
-      message: "Error in registation",
+      error: "Error in registation",
     });
   }
 };
@@ -57,7 +58,16 @@ module.exports.getUser = async (req, res) => {
   try {
     const user = req.user;
 
-    return res.status(200).json({ user });
+    const { id, name, email, role } = user;
+
+    const userDetails = {
+      id,
+      name,
+      email,
+      role,
+    };
+
+    return res.status(200).json({ userDetails });
   } catch (error) {
     console.log("******", error);
     return res.status(500).json({ message: "Internal Server Error" });
