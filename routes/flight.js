@@ -12,4 +12,16 @@ router.post(
 
 router.get("/getFlights", flightController.fetchFlights);
 
+router.put(
+  "/update/:id",
+  passport.authenticate("jwt", { session: false }),
+  flightController.updateFlight
+);
+
+router.delete(
+  "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
+  flightController.deleteFlight
+);
+
 module.exports = router;
