@@ -11,9 +11,27 @@ router.post(
 );
 
 router.get(
-  "/getPasseger",
+  "/getAllPassengers",
   passport.authenticate("jwt", { session: false }),
-  passengerController.getPassenger
+  passengerController.getAllPassengers
+);
+
+router.get(
+  "/getPassenger/:id",
+  passport.authenticate("jwt", { session: false }),
+  passengerController.getPassengerById
+);
+
+router.put(
+  "/conform/:id",
+  passport.authenticate("jwt", { session: false }),
+  passengerController.confirmPassenger
+);
+
+router.delete(
+  "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
+  passengerController.deleteById
 );
 
 module.exports = router;

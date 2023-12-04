@@ -30,36 +30,23 @@ const passengerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    departureDest: {
-      type: String,
-      required: true,
-    },
-    arrivalDest: {
-      type: String,
-      required: true,
-    },
+
     flightClass: {
       type: String,
       required: true,
     },
-    airline: {
-      type: String,
-      required: true,
-    },
-    departureTime: {
-      type: String,
-      required: true,
-    },
-    arrivalTime: {
-      type: String,
-      required: true,
-    },
+
     departureDate: {
       type: String,
       required: true,
     },
     price: {
       type: Number,
+      required: true,
+    },
+    flightId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Flight",
       required: true,
     },
     status: {
