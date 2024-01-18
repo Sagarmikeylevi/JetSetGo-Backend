@@ -54,7 +54,7 @@ module.exports.addFlight = async (req, res) => {
 // get flight
 module.exports.fetchFlights = async (req, res) => {
   try {
-    const flights = await Flight.find({});
+    const flights = await Flight.find({}).sort({ createdAt: -1 });
 
     res.status(200).json({ flights });
   } catch (error) {
