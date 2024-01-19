@@ -5,7 +5,14 @@ const port = process.env.PORT;
 const mongoose = require("./config/mongoose");
 const passport = require("passport");
 const passportJWT = require("./config/passport-jwt-authentication");
+const Razorpay = require("razorpay");
 const cors = require("cors");
+
+module.exports.razorpayInstance = new Razorpay({
+  key_id: process.env.RAZORPAY_API_KEY,
+
+  key_secret: process.env.RAZORPAY_API_SECRECT,
+});
 
 app.use(cors());
 
