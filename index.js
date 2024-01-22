@@ -14,11 +14,10 @@ module.exports.razorpayInstance = new Razorpay({
   key_secret: process.env.RAZORPAY_API_SECRECT,
 });
 
-// Use CORS middleware before defining routes
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true, // This is important for handling cookies and credentials
+    origin: "*",
+    credentials: true,
   })
 );
 
