@@ -14,13 +14,7 @@ module.exports.razorpayInstance = new Razorpay({
   key_secret: process.env.RAZORPAY_API_SECRECT,
 });
 
-// Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // Allow any origin during development
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
