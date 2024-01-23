@@ -9,7 +9,7 @@ const passportJWT = require("./config/passport-jwt-authentication");
 const Razorpay = require("razorpay");
 
 const corsOptions = {
-  origin: "*",
+  origin: "http://localhost:5173",
   optionsSuccessStatus: 200,
 };
 
