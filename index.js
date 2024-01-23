@@ -8,13 +8,12 @@ const passport = require("passport");
 const passportJWT = require("./config/passport-jwt-authentication");
 const Razorpay = require("razorpay");
 
-app.use((req, res, next) => {
-  console.log("CORS middleware executing");
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+const corsOptions = {
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 module.exports.razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
