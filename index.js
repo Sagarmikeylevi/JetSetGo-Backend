@@ -1,14 +1,20 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT;
 const mongoose = require("./config/mongoose");
 const passport = require("passport");
 const passportJWT = require("./config/passport-jwt-authentication");
 const Razorpay = require("razorpay");
-const cors = require("cors");
 
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: "*", // Allow all origins
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 module.exports.razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
