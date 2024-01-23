@@ -8,10 +8,9 @@ const passport = require("passport");
 const passportJWT = require("./config/passport-jwt-authentication");
 const Razorpay = require("razorpay");
 
-// CORS configuration
 const corsOptions = {
-  origin: "*", // Allow all origins
-  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: "*",
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
