@@ -38,7 +38,7 @@ module.exports.paymentVarification = async (req, res) => {
       razorpay_signature,
     });
     res.redirect(
-      `http://localhost:5173/paymentsuccess?paymentId=${razorpay_payment_id}`
+      `https://jet-set-go-taupe.vercel.app/paymentsuccess?paymentId=${razorpay_payment_id}`
     );
   } else {
     res.status(400).json({
