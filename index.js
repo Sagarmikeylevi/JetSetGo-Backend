@@ -9,7 +9,7 @@ const passportJWT = require("./config/passport-jwt-authentication");
 const Razorpay = require("razorpay");
 
 const corsOptions = {
-  origin: "https://jet-set-go-taupe.vercel.app",
+  origin: "*",
   optionsSuccessStatus: 200,
 };
 
